@@ -1,0 +1,25 @@
+let express = require('express');
+let app = express();
+let bodyParser = require('body-parser');
+//可访问静态文件
+app.use(express.static('public'));
+//post请求的设置相关--图片转码太大无法上传问题
+app.use(bodyParser.urlencoded({extended: true,limit: '50mb'}));
+
+//设置跨域访问
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+  res.header("X-Powered-By",' 3.2.1');
+  res.header("Content-Type", "application/json;charset=utf-8");
+  next();
+});
+
+app.get('/',(req,res) => {
+  res.send('Hello World!33333333333333');
+});
+
+let server = app.listen(3000, function () {
+  console.log('success');
+});
