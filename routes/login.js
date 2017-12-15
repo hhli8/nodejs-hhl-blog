@@ -1,21 +1,26 @@
+let Db=require('.././database/db.js');
 let express = require('express');
 let router = express.Router();
-const dns = require('dns');
-
-dns.lookup('www.weeksign.com', (err, address, family) => {
-  console.log('IP 地址: %j 地址族: IPv%s', address, family);
-});
-// IP 地址: "192.0.43.8" 地址族: IPv4
 
 router.get('/', function(req, res) {
-  //res.json(req.query);
-  //res.json({s:'Birds home page'});
-  res.json(req.query);
-  //res.json({s:req.ip});
-  
+  let response;
+  Db.mongo.connect(Db.ten, function(err,db){
+    console.log('链接成功');
+    let Users=db.collection('person');
+    Users.find({name:'jack'}).toArray(function(err,doc){
+      if(doc.length){
+        response={'suc':true,'res':doc[0],msg:'成功'};
+      }else{
+        response={'suc':false,'msg':'账号或密码有误'};
+      }
+      db.close();
+      res.json(response);
+    });
+    //res.json(response); //此处不行
+  });
 });
+
 router.post('/abort', function(req, res) {
-  //res.json({s:'Birds home page66666'});
   res.json(req.body);
 });
 
