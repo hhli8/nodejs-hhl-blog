@@ -19,6 +19,7 @@ app.all('*', function(req, res, next) {
 //app.get('/',require('./routes/index.js'));
 app.use('/',require('./routes/index'));
 app.use('/login',require('./routes/login'));
+app.use('/article',require('./routes/article'));
 
 let server = app.listen(3000, function () {
   console.log('success111');
