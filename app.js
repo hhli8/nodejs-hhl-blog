@@ -1,5 +1,15 @@
 let express = require('express');
 let app = express();
+
+
+// socket测试
+let http=require('http').Server(app);
+let io=require('socket.io')(http);
+io.on('connection', (socket)=>{
+  console.log('连接成功！');
+});
+
+
 let bodyParser = require('body-parser');
 //可访问静态文件
 app.use(express.static('public'));
@@ -21,6 +31,9 @@ app.use('/',require('./routes/index'));
 app.use('/login',require('./routes/login'));
 app.use('/article',require('./routes/article'));
 
-let server = app.listen(3000, function () {
+let server = http.listen(3000, function () {
   console.log('success111');
 });
+//let server = app.listen(3000, function () {
+//console.log('success111');
+//});

@@ -19,7 +19,8 @@
   "homepage": "https://github.com/hhli8/nodejs-hhl-blog#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "mongodb": "^2.0.55"
+    "mongodb": "^2.0.55",
+    "socket.io": "^2.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

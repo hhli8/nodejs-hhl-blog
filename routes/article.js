@@ -51,7 +51,7 @@ router.post('/add', function(req, res) {
         }
         
         
-        
+        data.simg.img='';
         Articles.insert(data,function(err,doc){
           if(err){
             throw err;
@@ -73,12 +73,13 @@ router.get('/find', function(req, res) {
     let Articles=db.collection('articles');
     let query=req.query;
     let search={
-      //level1:query.level1,level2:query.level2
+      level1:query.level1   //,level2:query.level2
     }
-    Articles.find(search,(err,doc)=>{
+    if(query.level2){search={level1:query.level1,level2:query.level2}   }
+    Articles.find(search).toArray((err,doc)=>{
       if(err){
         throw err;
-      }else{ console.log(doc.length);
+      }else{ 
         if(doc.length){
           response={suc:true,res:doc}
         }else{
