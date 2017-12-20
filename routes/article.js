@@ -74,22 +74,37 @@ router.get('/find', function(req, res) {
     let query=req.query;
     let search={
       level1:query.level1   //,level2:query.level2
-    }
+    };
     if(query.level2){search={level1:query.level1,level2:query.level2}   }
-    Articles.find(search).toArray((err,doc)=>{
+    Articles.find(search).count((err,doc)=>{
       if(err){
         throw err;
-      }else{ 
-        if(doc.length){
-          response={suc:true,res:doc}
-        }else{
-          response={suc:true,res:'',msg:'暂无数据'};
-        }
-        res.json(response);
+      }else{
+        let total=doc;
+        let cur=parseInt(query.page),
+            limit=parseInt(query.count);
+        let totalPage=Math.ceil(total/limit);
+        let skipNum=(cur-1)*limit;  
+        Articles.find(search).skip(skipNum).limit(limit).toArray((err,doc)=>{
+          if(err){
+            throw err;
+          }else{ 
+            if(doc.length){
+              response={suc:true,res:doc,page:cur,total:total,totalPage:totalPage};
+            }else{
+              response={suc:true,res:'',msg:'暂无数据'};
+            }
+            res.json(response);
+          }
+        });
+//      skipNum=total-skip-limit;
+//      if(skipNum<0){
+//        skipNum=0;
+//        limit=data.total-skip;
+//      }
       }
     });
   });
-  
 });
 
 router.post('/abort', function(req, res) {

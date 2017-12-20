@@ -6,7 +6,7 @@ let app = express();
 let http=require('http').Server(app);
 let io=require('socket.io')(http);
 io.on('connection', (socket)=>{
-  console.log('连接成功！');
+  console.log('连接成功3！');
 });
 
 
