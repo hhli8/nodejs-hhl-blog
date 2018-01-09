@@ -85,18 +85,32 @@ router.get('/find', function(req, res) {
             limit=parseInt(query.count);
         let totalPage=Math.ceil(total/limit);
         let skipNum=(cur-1)*limit;  
-        Articles.find(search).skip(skipNum).limit(limit).toArray((err,doc)=>{
+        Articles.find(search).limit(limit).toArray((err,doc)=>{
           if(err){
             throw err;
-          }else{ 
+          }else{
             if(doc.length){
               response={suc:true,res:doc,page:cur,total:total,totalPage:totalPage};
             }else{
               response={suc:true,res:'',msg:'暂无数据'};
             }
+            db.close();
             res.json(response);
           }
         });
+//      Articles.find(search).skip(skipNum).limit(limit).toArray((err,doc)=>{
+//        if(err){
+//          throw err;
+//        }else{ 
+//          if(doc.length){
+//            response={suc:true,res:doc,page:cur,total:total,totalPage:totalPage};
+//          }else{
+//            response={suc:true,res:'',msg:'暂无数据'};
+//          }
+//          res.json(response);
+//        }
+//      });
+
 //      skipNum=total-skip-limit;
 //      if(skipNum<0){
 //        skipNum=0;
