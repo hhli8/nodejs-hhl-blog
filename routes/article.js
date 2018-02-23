@@ -47,11 +47,12 @@ router.post('/add', function(req, res) {
           }  
           fs.writeFileSync('./public/article-imgs/'+id+'.png', bitmap);
           data.simg.site='http://localhost:3000/article-imgs/'+id+'.png';
+          //data.simg.site='http://www.weeksign.com:3000/article-imgs/'+id+'.png';
           //res.json({suc:true,rs:fs});
         }
         
         
-        data.simg.img='';
+        data.simg.img=''; // 从img转化为site
         Articles.insert(data,function(err,doc){
           if(err){
             throw err;
@@ -85,7 +86,7 @@ router.get('/find', function(req, res) {
             limit=parseInt(query.count);
         let totalPage=Math.ceil(total/limit);
         let skipNum=(cur-1)*limit;  
-        Articles.find(search).limit(limit).toArray((err,doc)=>{
+        Articles.find(search).skip(skipNum).limit(limit).toArray((err,doc)=>{
           if(err){
             throw err;
           }else{
