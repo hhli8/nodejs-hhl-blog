@@ -1,0 +1,49 @@
+1. Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.
+解决：res.header("Access-Control-Allow-Headers", "Content-Type,Access-Token");
+
+2. post  req.body无法获取数据
+解决：app.use(bodyParser.json());
+
+3  db.MhUsers.find() 查询    db.MhMeeting.find()   db.MhUsersCollection.find()
+db.MhTechnology.find()
+清除集合： db.MhUsers.remove({})
+插入(添加)，重置，查找demo见登录
+db.MhPMIndexEdit.remove({id:'iarticle1514001543065132223'})
+db.MhPMIndexEdit.find({id:'ia1514001537327629385'})
+db.MhMeeting.update({id:'mt1515001536742712427'},{$set:{lovecount:0}})
+
+db.MhUsers.update({id:"081215367336219330871"},{$set:{"userNickHadset":false}})
+
+集合查询
+show collections 
+http://www.cnblogs.com/knowledgesea/p/4634464.html
+
+4. 接短信-案例
+
+5. Request header field token is not allowed by Access-Control-Allow-Headers 
+in preflight response.
+解决： 啊实打实大
+
+6.node.js
+https://www.w3cschool.cn/nodejs/node-js-fs-module.html
+http://nodejs.cn/api/fs.html
+
+7.
+
+
+https://docs.mongodb.com/manual/reference/method/db.collection.update/
+教程
+
+// 启动
+bin/    mongod --dbpath=E:\mongodb\data
+
+id: mt151500   meeting
+   indexarticle  ia151400
+   technology  tech151600
+   
+文章type  1====index
+         2====technology
+         
+db.MhPMIndexEdit.count({type:1})
+
+项目启动过程

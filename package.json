@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/hhli8/nodejs-hhl-blog#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.16.2",
     "mongodb": "^2.0.55",
+    "request": "^2.83.0",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
@@ -27,6 +29,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cheerio": "^1.0.0-rc.2",
     "nodemon": "^1.12.1"
   },
   "presets": [
