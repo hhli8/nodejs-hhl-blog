@@ -1,5 +1,6 @@
 let express = require('express');
 let app = express();
+var path = require('path');
 
 
 // socket测试
@@ -12,7 +13,8 @@ let app = express();
 
 let bodyParser = require('body-parser');
 //可访问静态文件
-app.use(express.static('public'));
+app.use('/', express.static('public'));
+app.use('/view', express.static('view'));
 //post请求的设置相关--post参数无法获取和图片转码太大无法上传问题
 // https://blog.csdn.net/u010186511/article/details/78113207  版本
 app.use(bodyParser.json({limit: '50mb'}));
