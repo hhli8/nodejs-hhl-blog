@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title></title>
+	</head>
+	<body>
+	  hello word!
+	  <div id="text"></div>
+	  <script>
+	    console.log('this is node,html')
+	    window.onmessage = function (e) {
+	      var e = e || event
+	      console.log(e.data)
+	      document.querySelector('#text').innerHTML = e.data
+	    }
+	    window.addEventListener("message", () => {
+	      console.log(55556)
+	    }, false);
+	  </script>
+	</body>
+</html>

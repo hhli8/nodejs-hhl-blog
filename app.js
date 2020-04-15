@@ -57,6 +57,19 @@ app.use('/baidu',require('./routes/baidu'));
 // 代理
 
 
+// jsonp---测试
+app.get('/getdata_jsonp', function(req, res, next){
+    let response = {
+      "title": "习近平致信祝贺第三届世界智能大会开幕",
+      "content": "5月16日电第三届世界智能大会16日在天津开幕。国家主席习近平致信，向大会的召开致以热烈的祝贺，向出席会议的国际知名企业家、业界领军人物和图灵奖获得者等各界人士表示诚挚的欢迎。"
+    }
+    res.type('application/json')
+    res.jsonp(response)
+})
+
+
+
+
 //let server = http.listen(3000, function () {
 //console.log('success111');
 //});
