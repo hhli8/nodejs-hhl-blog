@@ -7,17 +7,53 @@
 	</head>
 	<body>
 	  hello word!
-	  <div id="text"></div>
+	  <div id="result"></div>
+	  <form action="ssss" type="post">
+	    <input type="text" placeholder="name"/>
+	    <input type="text" id="first"/>
+	    <button type="submit">登录</button>
+	  </form>
+    
 	  <script>
-	    console.log('this is node,html')
-	    window.onmessage = function (e) {
-	      var e = e || event
-	      console.log(e.data)
-	      document.querySelector('#text').innerHTML = e.data
-	    }
-	    window.addEventListener("message", () => {
-	      console.log(55556)
-	    }, false);
+//	    console.log('this is node,html')
+//	    window.onmessage = function (e) {
+//	      var e = e || event
+//	      console.log(e.data, e.source === window.parent)
+//	      document.querySelector('#text').innerHTML = e.data
+//	    }
+//	    window.addEventListener("message", () => {
+//	      console.log(55556)
+//	    }, false);
+//	    
+//	    window.parent.postMessage('color', '*')
+	    
+	    // 在主线程中使用时，onmessage和postMessage() 必须挂在worker对象上，
+	    // 而在worker中使用时不用这样做。原因是，在worker内部，worker是有效的全局作用域。
+	    let myWorker = new Worker('worker.js')
+      console.log(myWorker)
+      let first = document.getElementById('first')
+      first.onchange = function() {
+        // myWorker.postMessage([first.value])
+        // console.log('Message posted to worker');
+        console.log(first.value)
+//      result.textContent = first.value
+        result.innerHTML = first.value
+//      result.innerText = first.value
+      }
+      let result = document.getElementById('result')
+      myWorker.onmessage = function(e) {
+        result.textContent = e.data;
+        console.log('Message received from worker');
+        // myWorker.terminate();
+      }
+
+      //var vars = query.split("&"); 
+      //for (var i=0;i<vars.length;i++) { var pair = vars[i].split("="); if(pair[0] == variable){return pair[1];} } return(false);
+
+      let query = window.location.search.substring(1)
+      let querys = query.split('&')
+      console.log(querys, document.cookie)
 	  </script>
+	  <script>console.log(111)</script>
 	</body>
 </html>

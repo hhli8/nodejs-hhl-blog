@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true,limit: '50mb'}));
 
 //设置跨域访问
 app.all('*', function(req, res, next) {
-    if(req.headers.origin=='http://127.0.0.1:8080' || req.headers.origin=='http://127.0.0.1:8081' || req.headers.origin=='http://172.32.1.216:8080' || req.headers.origin=='http://106.15.176.100:80') {
+    if(req.headers.origin=='http://127.0.0.1:8020' || req.headers.origin=='http://127.0.0.1:8080' || req.headers.origin=='http://127.0.0.1:8081' || req.headers.origin=='http://172.32.1.216:8080' || req.headers.origin=='http://106.15.176.100:80') {
       res.header("Access-Control-Allow-Origin", req.headers.origin);
     }
     //res.header("Access-Control-Allow-Headers", "X-Requested-With");
