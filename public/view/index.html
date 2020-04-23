@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><link rel=icon href=http://172.32.30.167:3001/view/shop/favicon.ico><title></title><link href=http://172.32.30.167:3001/view/shop/css/chunk-vendors.2b963dd8.css rel=stylesheet><link href=http://172.32.30.167:3001/view/shop/css/app.f82bae72.css rel=stylesheet></head><body><noscript><strong>We're sorry but muh-shop doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script>(function(doc, win){
+        var docEl = document.documentElement
+        var dpr = window.devicePixelRatio || 1
+        var meta = document.createElement('meta')
+        var Scale = 1 / dpr
+        meta.setAttribute('name', 'viewport')
+        meta.setAttribute('content', 'width=device-width, user-scalable=no, initial-scale=' + Scale + ',maximum-scale=' + Scale + ', minimum-scale=' + Scale)
+        document.head.appendChild(meta)
+        docEl.setAttribute('data-dpr', dpr)
+        var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+        var recalc = function() {
+          var width = docEl.getBoundingClientRect().width
+          var rem = width / 10
+          docEl.style.fontSize = rem + 'px'
+        }
+        if (!doc.addEventListener) return
+        win.addEventListener(resizeEvt, recalc, false)
+        doc.addEventListener('DOMContentLoaded', recalc, false)
+      })(document, window)</script><script src=http://172.32.30.167:3001/view/shop/js/chunk-vendors.1bda55b8.js></script><script src=http://172.32.30.167:3001/view/shop/js/app.a3c2f7b1.js></script></body></html>
