@@ -58,8 +58,12 @@ app.use('/baidu',require('./routes/baidu'));
 // 代理
 
 // alipay
-app.use('/alipay',require('./routes/alipay'))
+app.use('/alipay', require('./routes/alipay'))
 
+// shop
+app.use('/shop/default', require('./routes/shop/default'))
+// shopAdmin
+app.use('/shopadmin/default', require('./routes/shopadmin/default'))
 
 // jsonp---测试
 app.get('/getdata_jsonp', function(req, res, next){
