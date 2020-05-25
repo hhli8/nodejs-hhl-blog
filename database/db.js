@@ -7,6 +7,6 @@
 //module.exports = db;
 
 var MongoClient = require('mongodb').MongoClient;
-var DB_CONN_STR = 'mongodb://localhost:27017/ten'; //# 数据库为 ten
+var DB_CONN_SHOP = 'mongodb://localhost:27017/shop'; //# 数据库为 shop
 exports.mongo = MongoClient;
-exports.ten = DB_CONN_STR;
+exports.shop = DB_CONN_SHOP;

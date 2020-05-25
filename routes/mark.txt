@@ -47,3 +47,15 @@ id: mt151500   meeting
 db.MhPMIndexEdit.count({type:1})
 
 项目启动过程
+
+
+
+
+// 操作
+基本查询，bin下，mongo，其他命令
+  show dbs 查看全部数据库
+  use xx 使用某个数据库
+  show collections 查看所有的集合(表)、某数据库下的
+  db.xx.find() 某个集合下的数据列表
+链接启动，bin下，mongod --dbpath=数据存储地址
+关闭方法，use admin => db shutdownServer()

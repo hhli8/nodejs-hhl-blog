@@ -64,6 +64,7 @@ app.use('/alipay', require('./routes/alipay'))
 app.use('/shop/default', require('./routes/shop/default'))
 // shopAdmin
 app.use('/shopadmin/default', require('./routes/shopadmin/default'))
+app.use('/shopadmin/common', require('./routes/shopadmin/common'))
 
 // jsonp---测试
 app.get('/getdata_jsonp', function(req, res, next){

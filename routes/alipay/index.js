@@ -32,10 +32,11 @@ router.get('/sign', async (req, res) => {
   const formData = new AlipaySdkForm()
   formData.setMethod('get')
   formData.addField('appId', '2016101800717286')
+  formData.addField('returnUrl', 'http://172.32.30.167:8080/shop/payresult')
   formData.addField('charset', 'utf-8')
   formData.addField('signType', 'RSA2')
   formData.addField('bizContent', {
-    outTradeNo: '1231231237',
+    outTradeNo: '1231231238',
     productCode: 'asdasd',
     totalAmount: '1',
     subject: '商品',
@@ -44,8 +45,10 @@ router.get('/sign', async (req, res) => {
   
   var result = await alipay.exec('alipay.trade.wap.pay', {}, { formData })
   return res.json({
-    status: 200,
-    result
+    code: 200,
+    data: {
+      url: result
+    }
   })
 })
 
