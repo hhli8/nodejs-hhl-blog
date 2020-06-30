@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	</head>
+	<body>
+	  
+	  <script>
+	    var socket = io('/', {transports: ['websocket'],upgrade:false})
+	    socket.on('connect',data =>{
+        //logic here
+      })
+	    // socket.emit('new message', 'username')
+	  </script>
+	</body>
+</html>

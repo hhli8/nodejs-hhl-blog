@@ -26,7 +26,7 @@
     "mongodb": "^2.0.55",
     "mysql": "^2.18.1",
     "request": "^2.83.0",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
